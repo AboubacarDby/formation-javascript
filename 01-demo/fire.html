@@ -1,0 +1,34 @@
+https://toto-cesi-default-rtdb.europe-west1.firebasedatabase.app/
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<button id="btnAjouter">Ajouter</button>
+<button id="btnModifier">MODIFIER</button>
+<button id="btnModifier2">MODIFIER PUT</button>
+<button id="btnDelete">DELETE</button>
+<script>
+document.getElementById("btnAjouter").onclick = async() => {
+    const url ='https://toto-cesi-default-rtdb.europe-west1.firebasedatabase.app/personnes.json';
+    const personne = { prenom: "Pierre", nom: "Dupont", status: true };
+    const response = await axios.post(url,personne);  
+    console.log(response.data); // id = response.data;
+
+}
+document.getElementById("btnModifier").onclick = async() => {
+    const url ='https://toto-cesi-default-rtdb.europe-west1.firebasedatabase.app/personnes/-OBjojbK-zvuKCo9cPHe/.json';
+    const personne = { status: false };
+    const response = await axios.patch(url,personne);  
+    console.log(response.data); // id = response.data;
+
+}
+document.getElementById("btnModifier2").onclick = async() => {
+    const url ='https://toto-cesi-default-rtdb.europe-west1.firebasedatabase.app/personnes/-OBjojbK-zvuKCo9cPHe/.json';
+    const personne = { prenom: "Pierre2", nom: "Dupont2", status: true };
+    const response = await axios.put(url,personne);  
+    console.log(response.data); // id = response.data;
+}
+document.getElementById("btnDelete").onclick = async() => {
+    const url ='https://toto-cesi-default-rtdb.europe-west1.firebasedatabase.app/personnes/-OBjojbK-zvuKCo9cPHe/.json';
+    const response = await axios.delete(url);  
+    console.log(response.data); // id = response.data;
+}
+</script>
